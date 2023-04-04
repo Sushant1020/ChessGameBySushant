@@ -1,0 +1,27 @@
+.box1:nth-of-type(odd) {
+  background-color: grey;
+  border: 1px solid black;
+  width: 75px;
+  height: 75px;
+}
+.box1:nth-of-type(even) {
+  background-color: white;
+  border: 1px solid black;
+  width: 75px;
+  height: 75px;
+}
+.box:nth-of-type(even) {
+  background-color: grey;
+  border: 1px solid black;
+  width: 75px;
+  height: 75px;
+}
+.box:nth-of-type(odd) {
+  background-color: white;
+  border: 1px solid black;
+  width: 75px;
+  height: 75px;
+}
+#board {
+  margin-left: 350px;
+}

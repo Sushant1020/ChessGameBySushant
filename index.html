@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <table id="board">
+      <tr>
+        <td
+          class="box1"
+          id="i18b"
+          onclick="action(0,0)"
+          ondblclick="change(0,0)"
+        >
+          <img
+            id="i07"
+            src="./images/blackrook.png"
+            style="width: 75px"
+            value="br"
+          />
+        </td>
+        <td
+          class="box1"
+          id="i28b"
+          onclick="action(0,1)"
+          ondblclick="change(0,1)"
+        >
+          <img
+            id="i17"
+            src="./images/blackknight.png"
+            style="width: 75px"
+            value="bk"
+          />
+        </td>
+        <td
+          class="box1"
+          id="i38b"
+          onclick="action(0,2)"
+          ondblclick="change(0,2)"
+        >
+          <img id="i27" src="./images/blackbishop.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i48b"
+          onclick="action(0,3)"
+          ondblclick="change(0,3)"
+        >
+          <img id="i37" src="./images/blackking.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i58b"
+          onclick="action(0,4)"
+          ondblclick="change(0,4)"
+        >
+          <img id="i47" src="./images/blackqueen.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i68b"
+          onclick="action(0,5)"
+          ondblclick="change(0,5)"
+        >
+          <img id="i57" src="./images/blackbishop.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i78b"
+          onclick="action(0,6)"
+          ondblclick="change(0,6)"
+        >
+          <img id="i67" src="./images/blackknight.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i88b"
+          onclick="action(0,7)"
+          ondblclick="change(0,7)"
+        >
+          <img id="i77" src="./images/blackrook.png" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td><h2>Game Rules to be followed:</h2></td>
+      </tr>
+      <tr>
+        <td
+          class="box"
+          id="i17b"
+          onclick="action(1,0)"
+          ondblclick="change(1,0)"
+        >
+          <img id="i06" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i27b"
+          onclick="action(1,1)"
+          ondblclick="change(1,1)"
+        >
+          <img id="i16" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i37b"
+          onclick="action(1,2)"
+          ondblclick="change(1,2)"
+        >
+          <img id="i26" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i47b"
+          onclick="action(1,3)"
+          ondblclick="change(1,3)"
+        >
+          <img id="i36" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i57b"
+          onclick="action(1,4)"
+          ondblclick="change(1,4)"
+        >
+          <img id="i46" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i67b"
+          onclick="action(1,5)"
+          ondblclick="change(1,5)"
+        >
+          <img id="i56" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i77b"
+          onclick="action(1,6)"
+          ondblclick="change(1,6)"
+        >
+          <img id="i66" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i87b"
+          onclick="action(1,7)"
+          ondblclick="change(1,7)"
+        >
+          <img id="i76" src="./images/blackpawn.png" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td><h2>1.Once game starts do not refresh the page.</h2></td>
+      </tr>
+      <tr>
+        <td
+          class="box1"
+          id="i16b"
+          onclick="action(2,0)"
+          ondblclick="change(2,0)"
+        >
+          <img id="i05" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i26b"
+          onclick="action(2,1)"
+          ondblclick="change(2,1)"
+        >
+          <img id="i15" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i36b"
+          onclick="action(2,2)"
+          ondblclick="change(2,2)"
+        >
+          <img id="i25" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i46b"
+          onclick="action(2,3)"
+          ondblclick="change(2,3)"
+        >
+          <img id="i35" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i56b"
+          onclick="action(2,4)"
+          ondblclick="change(2,4)"
+        >
+          <img id="i45" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i66b"
+          onclick="action(2,5)"
+          ondblclick="change(2,5)"
+        >
+          <img id="i55" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i76b"
+          onclick="action(2,6)"
+          ondblclick="change(2,6)"
+        >
+          <img id="i65" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i86b"
+          onclick="action(2,7)"
+          ondblclick="change(2,7)"
+        >
+          <img id="i75" src="" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td><h2>2.castling is allowed.</h2></td>
+      </tr>
+      <tr>
+        <td
+          class="box"
+          id="i15b"
+          onclick="action(3,0)"
+          ondblclick="change(3,0)"
+        >
+          <img id="i04" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i25b"
+          onclick="action(3,1)"
+          ondblclick="change(3,1)"
+        >
+          <img id="i14" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i35b"
+          onclick="action(3,2)"
+          ondblclick="change(3,2)"
+        >
+          <img id="i24" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i45b"
+          onclick="action(3,3)"
+          ondblclick="change(3,3)"
+        >
+          <img id="i34" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i55b"
+          onclick="action(3,4)"
+          ondblclick="change(3,4)"
+        >
+          <img id="i44" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i65b"
+          onclick="action(3,5)"
+          ondblclick="change(3,5)"
+        >
+          <img id="i54" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i75b"
+          onclick="action(3,6)"
+          ondblclick="change(3,6)"
+        >
+          <img id="i64" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i85b"
+          onclick="action(3,7)"
+          ondblclick="change(3,7)"
+        >
+          <img id="i74" src="" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td><h2>3.Both players should follow basic rules of chess.</h2></td>
+      </tr>
+      <tr>
+        <td
+          class="box1"
+          id="i14b"
+          onclick="action(4,0)"
+          ondblclick="change(4,0)"
+        >
+          <img id="i03" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i24b"
+          onclick="action(4,1)"
+          ondblclick="change(4,1)"
+        >
+          <img id="i13" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i34b"
+          onclick="action(4,2)"
+          ondblclick="change(4,2)"
+        >
+          <img id="i23" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i44b"
+          onclick="action(4,3)"
+          ondblclick="change(4,3)"
+        >
+          <img id="i33" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i54b"
+          onclick="action(4,4)"
+          ondblclick="change(4,4)"
+        >
+          <img id="i43" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i64b"
+          onclick="action(4,5)"
+          ondblclick="change(4,5)"
+        >
+          <img id="i53" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i74b"
+          onclick="action(4,6)"
+          ondblclick="change(4,6)"
+        >
+          <img id="i63" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i84b"
+          onclick="action(4,7)"
+          ondblclick="change(4,7)"
+        >
+          <img id="i73" src="" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td>
+          <h2>
+            Because the game do not give warnings for checks and the checkmate.
+          </h2>
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="box"
+          id="i13b"
+          onclick="action(5,0)"
+          ondblclick="change(5,0)"
+        >
+          <img id="i02" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i23b"
+          onclick="action(5,1)"
+          ondblclick="change(5,1)"
+        >
+          <img id="i12" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i33b"
+          onclick="action(5,2)"
+          ondblclick="change(5,2)"
+        >
+          <img id="i22" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i43b"
+          onclick="action(5,3)"
+          ondblclick="change(5,3)"
+        >
+          <img id="i32" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i53b"
+          onclick="action(5,4)"
+          ondblclick="change(5,4)"
+        >
+          <img id="i42" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i63b"
+          onclick="action(5,5)"
+          ondblclick="change(5,5)"
+        >
+          <img id="i52" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i73b"
+          onclick="action(5,6)"
+          ondblclick="change(5,6)"
+        >
+          <img id="i62" src="" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i83b"
+          onclick="action(5,7)"
+          ondblclick="change(5,7)"
+        >
+          <img id="i72" src="" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td>
+          <h2>
+            4.Play with your friends as it currently does not support computer
+            engine
+          </h2>
+        </td>
+      </tr>
+      <tr>
+        <td
+          class="box1"
+          id="i12b"
+          onclick="action(6,0)"
+          ondblclick="change(6,0)"
+        >
+          <img id="i01" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i22b"
+          onclick="action(6,1)"
+          ondblclick="change(6,1)"
+        >
+          <img id="i11" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i32b"
+          onclick="action(6,2)"
+          ondblclick="change(6,2)"
+        >
+          <img id="i21" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i42b"
+          onclick="action(6,3)"
+          ondblclick="change(6,3)"
+        >
+          <img id="i31" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i52b"
+          onclick="action(6,4)"
+          ondblclick="change(6,4)"
+        >
+          <img id="i41" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i62b"
+          onclick="action(6,5)"
+          ondblclick="change(6,5)"
+        >
+          <img id="i51" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i72b"
+          onclick="action(6,6)"
+          ondblclick="change(6,6)"
+        >
+          <img id="i61" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td
+          class="box1"
+          id="i82b"
+          onclick="action(6,7)"
+          ondblclick="change(6,7)"
+        >
+          <img id="i71" src="./images/whitepawn.png" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td><h1 id="h1">Its White Turn</h1></td>
+      </tr>
+      <tr>
+        <td
+          class="box"
+          id="i11b"
+          onclick="action(7,0)"
+          ondblclick="change(7,0)"
+        >
+          <img id="i00" src="./images/whiterook.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i21b"
+          onclick="action(7,1)"
+          ondblclick="change(7,1)"
+        >
+          <img id="i10" src="./images/whiteknight.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i31b"
+          onclick="action(7,2)"
+          ondblclick="change(7,2)"
+        >
+          <img id="i20" src="./images/whitebishop.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i41b"
+          onclick="action(7,3)"
+          ondblclick="change(7,3)"
+        >
+          <img id="i30" src="./images/whiteking.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i51b"
+          onclick="action(7,4)"
+          ondblclick="change(7,4)"
+        >
+          <img id="i40" src="./images/whitequeen.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i61b"
+          onclick="action(7,5)"
+          ondblclick="change(7,5)"
+        >
+          <img id="i50" src="./images/whitebishop.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i71b"
+          onclick="action(7,6)"
+          ondblclick="change(7,6)"
+        >
+          <img id="i60" src="./images/whiteknight.png" style="width: 75px" />
+        </td>
+        <td
+          class="box"
+          id="i81b"
+          onclick="action(7,7)"
+          ondblclick="change(7,7)"
+        >
+          <img id="i70" src="./images/whiterook.png" style="width: 75px" />
+        </td>
+        <td style="width: 75px"></td>
+        <td>
+          <h2>5.Use Double click to move the piece.</h2>
+        </td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    let turn = 0;
+    let i, j;
+    let wx, wy;
+    arr = [8][8];
+    var src1;
+    var src2;
+    let time = 0;
+    function change(i, j) {
+      //For Rows
+      if (i == 0) var a = 7;
+      if (i == 1) var a = 6;
+      if (i == 2) var a = 5;
+      if (i == 3) var a = 4;
+      if (i == 4) var a = 3;
+      if (i == 5) var a = 2;
+      if (i == 6) var a = 1;
+      if (i == 7) var a = 0;
+
+      //For Columns
+      if (j == 0) var b = 0;
+      if (j == 1) var b = 1;
+      if (j == 2) var b = 2;
+      if (j == 3) var b = 3;
+      if (j == 4) var b = 4;
+      if (j == 5) var b = 5;
+      if (j == 6) var b = 6;
+      if (j == 7) var b = 7;
+
+      alert("Wx is " + wx + " and wy=" + wy);
+      var wz = wx + "" + wy;
+      var c = b + "" + a;
+      time = 0;
+      var srctemp = document.querySelector("#" + "i" + wz).src;
+      alert("src1 is " + srctemp);
+      document.querySelector("#" + "i" + c).src = srctemp;
+      document.querySelector("#" + "i" + wz).src = "";
+
+      for (let xz = 1; xz < 9; xz++) {
+        for (let xy = 1; xy < 9; xy++) {
+          xx = xy + "" + xz;
+          document.querySelector("#" + "i" + xx + "b").style.backgroundColor =
+            "";
+        }
+      }
+    }
+    function action(i, j) {
+      //For Rows
+      if (i == 0) var a = 7;
+      if (i == 1) var a = 6;
+      if (i == 2) var a = 5;
+      if (i == 3) var a = 4;
+      if (i == 4) var a = 3;
+      if (i == 5) var a = 2;
+      if (i == 6) var a = 1;
+      if (i == 7) var a = 0;
+
+      //For Columns
+      if (j == 0) var b = 0;
+      if (j == 1) var b = 1;
+      if (j == 2) var b = 2;
+      if (j == 3) var b = 3;
+      if (j == 4) var b = 4;
+      if (j == 5) var b = 5;
+      if (j == 6) var b = 6;
+      if (j == 7) var b = 7;
+
+      var c = b + "" + a;
+      i = b;
+      j = a;
+      if (time == 0) {
+        wx = b;
+        wy = a;
+      }
+      time = time + 1;
+      let step10;
+      // function change(step10) {
+      //   var src1 = document.querySelector("#" + "i" + c).src;
+      //   document.querySelector("#" + "i" + step10).src = src1;
+      // }
+
+      var src = document.querySelector("#" + "i" + c).src; //This is src saved
+      src1 = src;
+      var piece;
+      if (turn % 2 != 0) {
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/blackpawn.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+          turn = turn + 1;
+          piece = "bp";
+          var step1 = b + 1 + "" + a;
+          var step2 = b + 1 + "" + (a - 1);
+
+          document.querySelector(
+            "#" + "i" + step1 + "b"
+          ).style.backgroundColor = "red";
+
+          document.querySelector(
+            "#" + "i" + step2 + "b"
+          ).style.backgroundColor = "red";
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/blackrook.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+          turn = turn + 1;
+          piece = "br";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/blackknight.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+          turn = turn + 1;
+          piece = "bkn";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+          var m = b;
+          var n = a;
+          var o = b;
+          var p = a;
+          var q = b;
+          var r = a;
+          var s = b;
+          var t = a;
+          c = c - 1;
+          d = d - 2;
+          if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+            var step1 = c + "" + d;
+
+            document.querySelector(
+              "#" + "i" + step1 + "b"
+            ).style.backgroundColor = "red";
+          }
+          e = e - 2;
+          f = f - 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            var step2 = e + "" + f;
+
+            document.querySelector(
+              "#" + "i" + step2 + "b"
+            ).style.backgroundColor = "red";
+          }
+          g = g - 2;
+          h = h + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            var step3 = g + "" + h;
+
+            document.querySelector(
+              "#" + "i" + step3 + "b"
+            ).style.backgroundColor = "red";
+          }
+          k = k - 1;
+          l = l + 2;
+          if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+            var step4 = k + "" + l;
+
+            document.querySelector(
+              "#" + "i" + step4 + "b"
+            ).style.backgroundColor = "red";
+          }
+          m = m + 1;
+          n = n + 2;
+          if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
+            var step5 = m + "" + n;
+
+            document.querySelector(
+              "#" + "i" + step5 + "b"
+            ).style.backgroundColor = "red";
+          }
+          p = p + 1;
+          o = o + 2;
+          if (p >= 1 && p <= 8 && o >= 1 && o <= 8) {
+            var step6 = o + "" + p;
+
+            document.querySelector(
+              "#" + "i" + step6 + "b"
+            ).style.backgroundColor = "red";
+          }
+          q = q + 2;
+          r = r - 1;
+          if (q >= 1 && q <= 8 && r >= 1 && r <= 8) {
+            var step7 = q + "" + r;
+
+            document.querySelector(
+              "#" + "i" + step7 + "b"
+            ).style.backgroundColor = "red";
+          }
+          s = s + 1;
+          t = t - 2;
+          if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
+            var step8 = s + "" + t;
+
+            document.querySelector(
+              "#" + "i" + step8 + "b"
+            ).style.backgroundColor = "red";
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/blackbishop.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+          turn = turn + 1;
+          piece = "bb";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            c = c - 1;
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            e = e + 1;
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            h = h - 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+            l = l + 1;
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/blackqueen.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+          turn = turn + 1;
+          piece = "bq";
+
+          b = b + 1;
+          a = a + 1;
+
+          var y = b;
+          var z = a;
+
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+          }
+
+          c = y;
+          d = z;
+          e = y;
+          f = z;
+          g = y;
+          h = z;
+          k = y;
+          l = z;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            c = c - 1;
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            e = e + 1;
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            h = h - 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+            l = l + 1;
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/blackking.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+          turn = turn + 1;
+          piece = "bk";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+          var m = b;
+          var n = a;
+          var o = b;
+          var p = a;
+          var q = b;
+          var r = a;
+          var s = b;
+          var t = a;
+          var u = b;
+          var v = a;
+
+          var step1;
+          var step2;
+          var step3;
+          var step4;
+          var step5;
+          var step6;
+          var step7;
+          var step8;
+
+          c = c + 1;
+          d = d - 1;
+          if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+            step1 = c + "" + d;
+
+            document.querySelector(
+              "#" + "i" + step1 + "b"
+            ).style.backgroundColor = "red";
+          }
+
+          e = e + 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            step2 = e + "" + f;
+
+            document.querySelector(
+              "#" + "i" + step2 + "b"
+            ).style.backgroundColor = "red";
+          }
+          g = g + 1;
+          h = h + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            step3 = g + "" + h;
+
+            document.querySelector(
+              "#" + "i" + step3 + "b"
+            ).style.backgroundColor = "red";
+          }
+          n = n - 1;
+          if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
+            step4 = m + "" + n;
+
+            document.querySelector(
+              "#" + "i" + step4 + "b"
+            ).style.backgroundColor = "red";
+          }
+          p = p + 1;
+          if (o >= 1 && o <= 8 && p >= 1 && p <= 8) {
+            step5 = o + "" + p;
+
+            document.querySelector(
+              "#" + "i" + step5 + "b"
+            ).style.backgroundColor = "red";
+          }
+          q = q - 1;
+          r = r - 1;
+          if (q >= 1 && q <= 8 && r >= 1 && r <= 8) {
+            step6 = q + "" + r;
+
+            document.querySelector(
+              "#" + "i" + step6 + "b"
+            ).style.backgroundColor = "red";
+          }
+          s = s - 1;
+          if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
+            step7 = s + "" + t;
+
+            document.querySelector(
+              "#" + "i" + step7 + "b"
+            ).style.backgroundColor = "red";
+          }
+          u = u - 1;
+          v = v + 1;
+          if (u >= 1 && u <= 8 && v >= 1 && v <= 8) {
+            step8 = u + "" + v;
+
+            document.querySelector(
+              "#" + "i" + step8 + "b"
+            ).style.backgroundColor = "red";
+          }
+        }
+      } else if (turn % 2 == 0) {
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/whitepawn.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its White's Turn";
+          turn = turn + 1;
+          piece = "wp";
+          a = a + 1;
+          b = b + 1;
+          var step1 = b + "" + (a + 1);
+          var step2 = b + "" + (a + 2);
+
+          document.querySelector(
+            "#" + "i" + step1 + "b"
+          ).style.backgroundColor = "red";
+          document.querySelector(
+            "#" + "i" + step2 + "b"
+          ).style.backgroundColor = "red";
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/whiterook.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its White's Turn";
+          turn = turn + 1;
+          piece = "wr";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/whiteknight.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its White's Turn";
+          turn = turn + 1;
+          piece = "wkn";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+          var m = b;
+          var n = a;
+          var o = b;
+          var p = a;
+          var q = b;
+          var r = a;
+          var s = b;
+          var t = a;
+          c = c - 1;
+          d = d - 2;
+          if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+            var step1 = c + "" + d;
+
+            document.querySelector(
+              "#" + "i" + step1 + "b"
+            ).style.backgroundColor = "red";
+          }
+          e = e - 2;
+          f = f - 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            var step2 = e + "" + f;
+
+            document.querySelector(
+              "#" + "i" + step2 + "b"
+            ).style.backgroundColor = "red";
+          }
+          g = g - 2;
+          h = h + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            var step3 = g + "" + h;
+
+            document.querySelector(
+              "#" + "i" + step3 + "b"
+            ).style.backgroundColor = "red";
+          }
+          k = k - 1;
+          l = l + 2;
+          if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+            var step4 = k + "" + l;
+
+            document.querySelector(
+              "#" + "i" + step4 + "b"
+            ).style.backgroundColor = "red";
+          }
+          m = m + 1;
+          n = n + 2;
+          if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
+            var step5 = m + "" + n;
+
+            document.querySelector(
+              "#" + "i" + step5 + "b"
+            ).style.backgroundColor = "red";
+          }
+          p = p + 1;
+          o = o + 2;
+          if (p >= 1 && p <= 8 && o >= 1 && o <= 8) {
+            var step6 = o + "" + p;
+
+            document.querySelector(
+              "#" + "i" + step6 + "b"
+            ).style.backgroundColor = "red";
+          }
+          q = q + 2;
+          r = r - 1;
+          if (q >= 1 && q <= 8 && r >= 1 && r <= 8) {
+            var step7 = q + "" + r;
+
+            document.querySelector(
+              "#" + "i" + step7 + "b"
+            ).style.backgroundColor = "red";
+          }
+          s = s + 1;
+          t = t - 2;
+          if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
+            var step8 = s + "" + t;
+
+            document.querySelector(
+              "#" + "i" + step8 + "b"
+            ).style.backgroundColor = "red";
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/whitebishop.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its White's Turn";
+          turn = turn + 1;
+          piece = "wb";
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            c = c - 1;
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            e = e + 1;
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            h = h - 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+            l = l + 1;
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/whitequeen.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its White's Turn";
+          turn = turn + 1;
+          piece = "wq";
+
+          b = b + 1;
+          a = a + 1;
+
+          var y = b;
+          var z = a;
+
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+          }
+
+          c = y;
+          d = z;
+          e = y;
+          f = z;
+          g = y;
+          h = z;
+          k = y;
+          l = z;
+
+          for (let i = 1; i < 16; i++) {
+            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+              var step = c + "" + d;
+
+              document.querySelector(
+                "#" + "i" + step + "b"
+              ).style.backgroundColor = "red";
+            }
+            c = c - 1;
+            d = d - 1;
+            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+              var step1 = e + "" + f;
+
+              document.querySelector(
+                "#" + "i" + step1 + "b"
+              ).style.backgroundColor = "red";
+            }
+            e = e + 1;
+            f = f + 1;
+            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+              var step2 = g + "" + h;
+
+              document.querySelector(
+                "#" + "i" + step2 + "b"
+              ).style.backgroundColor = "red";
+            }
+            g = g + 1;
+            h = h - 1;
+            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+              var step3 = k + "" + l;
+
+              document.querySelector(
+                "#" + "i" + step3 + "b"
+              ).style.backgroundColor = "red";
+            }
+            k = k - 1;
+            l = l + 1;
+          }
+        }
+        if (
+          src ==
+          "file:///C:/Users/susha/Desktop/Chess%20Game/images/whiteking.png"
+        ) {
+          document.querySelector("#h1").innerHTML = "Its White's Turn";
+          turn = turn + 1;
+          piece = "wk";
+
+          b = b + 1;
+          a = a + 1;
+          var c = b;
+          var d = a;
+          var e = b;
+          var f = a;
+          var g = b;
+          var h = a;
+          var k = b;
+          var l = a;
+          var m = b;
+          var n = a;
+          var o = b;
+          var p = a;
+          var q = b;
+          var r = a;
+          var s = b;
+          var t = a;
+          var u = b;
+          var v = a;
+
+          var step1;
+          var step2;
+          var step3;
+          var step4;
+          var step5;
+          var step6;
+          var step7;
+          var step8;
+
+          c = c + 1;
+          d = d - 1;
+          if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+            step1 = c + "" + d;
+
+            document.querySelector(
+              "#" + "i" + step1 + "b"
+            ).style.backgroundColor = "red";
+          }
+
+          e = e + 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            step2 = e + "" + f;
+
+            document.querySelector(
+              "#" + "i" + step2 + "b"
+            ).style.backgroundColor = "red";
+          }
+          g = g + 1;
+          h = h + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            step3 = g + "" + h;
+
+            document.querySelector(
+              "#" + "i" + step3 + "b"
+            ).style.backgroundColor = "red";
+          }
+          n = n - 1;
+          if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
+            step4 = m + "" + n;
+
+            document.querySelector(
+              "#" + "i" + step4 + "b"
+            ).style.backgroundColor = "red";
+          }
+          p = p + 1;
+          if (o >= 1 && o <= 8 && p >= 1 && p <= 8) {
+            step5 = o + "" + p;
+
+            document.querySelector(
+              "#" + "i" + step5 + "b"
+            ).style.backgroundColor = "red";
+          }
+          q = q - 1;
+          r = r - 1;
+          if (q >= 1 && q <= 8 && r >= 1 && r <= 8) {
+            step6 = q + "" + r;
+
+            document.querySelector(
+              "#" + "i" + step6 + "b"
+            ).style.backgroundColor = "red";
+          }
+          s = s - 1;
+          if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
+            step7 = s + "" + t;
+
+            document.querySelector(
+              "#" + "i" + step7 + "b"
+            ).style.backgroundColor = "red";
+          }
+          u = u - 1;
+          v = v + 1;
+          if (u >= 1 && u <= 8 && v >= 1 && v <= 8) {
+            step8 = u + "" + v;
+
+            document.querySelector(
+              "#" + "i" + step8 + "b"
+            ).style.backgroundColor = "red";
+          }
+        }
+      }
+    }
+
+    if (turn == 0) {
+      let arr = [8][8];
+      arr[0][7] = "br";
+      arr[0][6] = "bk";
+      arr[0][5] = "bb";
+      arr[0][4] = "bk";
+      arr[0][3] = "bq";
+      arr[0][2] = "bb";
+      arr[0][1] = "bk";
+      arr[0][0] = "br";
+
+      arr[7][0] = "br";
+      arr[7][1] = "bk";
+      arr[7][2] = "bb";
+      arr[7][3] = "bk";
+      arr[7][4] = "bq";
+      arr[7][5] = "bb";
+      arr[7][6] = "bk";
+      arr[7][7] = "br";
+    }
+    var flag = true;
+    while (flag) {}
+  </script>
+</html>
