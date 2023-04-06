@@ -820,10 +820,10 @@
       //   document.querySelector("#" + "i" + step10).src = src1;
       // }
 
-      var src = document.querySelector("#" + "i" + c).src; //This is src saved
-      src1 = src;
       var piece;
       if (turn % 2 != 0) {
+        var src = document.querySelector("#" + "i" + c).src; //This is src saved
+        src1 = src;
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackpawn_ohj0vt.png"
@@ -1480,6 +1480,8 @@
           }
         }
       } else if (turn % 2 == 0) {
+        var src = document.querySelector("#" + "i" + c).src; //This is src saved
+        src1 = src;
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitepawn_w0tjjs.png"
