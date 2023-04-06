@@ -697,14 +697,40 @@
     </table>
   </body>
   <script>
+    let select = true;
     let turn = 0;
     let i, j;
     let wx, wy;
+    let black = [
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackrook_qbolng.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackknight_s8tzkr.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackbishop_jtq3ub.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackking_i5pyup.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackqueen_dnlfsr.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackpawn_ohj0vt.png",
+    ];
+
+    let white = [
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitepawn_w0tjjs.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634271/whiterook_hy8d3v.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whiteknight_arpbye.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitebishop_vtx0z5.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whiteking_ianh5t.png",
+      "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitequeen_zfetld.png",
+    ];
+
+    arr1 = [100];
     arr = [8][8];
     var src1;
     var src2;
     let time = 0;
     function change(i, j) {
+      for (let xz = 1; xz < 9; xz++) {
+        for (let xy = 1; xy < 9; xy++) {
+          xx = xy + "" + xz;
+          document.querySelector("#" + "i" + xx + "b").disabled = "false";
+        }
+      }
       //For Rows
       if (i == 0) var a = 7;
       if (i == 1) var a = 6;
@@ -729,8 +755,27 @@
       var c = b + "" + a;
       time = 0;
       var srctemp = document.querySelector("#" + "i" + wz).src;
-      document.querySelector("#" + "i" + c).src = srctemp;
-      document.querySelector("#" + "i" + wz).src = "";
+      let flag = false;
+      var d = b + 1;
+      var e = a + 1;
+      var f = d + "" + e;
+      for (let i = 0; i < 100; i++) {
+        if (document.querySelector("#" + "i" + f + "b") == arr1[i]) {
+          flag = true;
+        }
+      }
+
+      if (flag) {
+        if (document.querySelector("#" + "i" + c).src != "") {
+          document.querySelector("#" + "i" + c).src = srctemp;
+        } else {
+          document.querySelector("#" + "i" + c).src = "";
+          document.querySelector("#" + "i" + c).src = srctemp;
+        }
+        document.querySelector("#" + "i" + wz).src = "";
+      } else {
+        turn = turn - 1;
+      }
 
       for (let xz = 1; xz < 9; xz++) {
         for (let xy = 1; xy < 9; xy++) {
@@ -783,24 +828,59 @@
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackpawn_ohj0vt.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of white) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its Blacks Turn";
           turn = turn + 1;
           piece = "bp";
           var step1 = b + 1 + "" + a;
           var step2 = b + 1 + "" + (a - 1);
-
           document.querySelector(
             "#" + "i" + step1 + "b"
           ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step1 + "b");
+          arr1.push(pop);
 
           document.querySelector(
             "#" + "i" + step2 + "b"
           ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step2 + "b");
+          arr1.push(pop);
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (xx != step1 && xx != step2) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackrook_qbolng.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of white) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its Blacks Turn";
           turn = turn + 1;
           piece = "br";
@@ -822,6 +902,8 @@
               document.querySelector(
                 "#" + "i" + step + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step + "b");
+              arr1.push(pop);
             }
             d = d - 1;
             if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
@@ -830,6 +912,8 @@
               document.querySelector(
                 "#" + "i" + step1 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step1 + "b");
+              arr1.push(pop);
             }
             f = f + 1;
             if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
@@ -838,6 +922,8 @@
               document.querySelector(
                 "#" + "i" + step2 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step2 + "b");
+              arr1.push(pop);
             }
             g = g + 1;
             if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
@@ -846,14 +932,37 @@
               document.querySelector(
                 "#" + "i" + step3 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step3 + "b");
+              arr1.push(pop);
             }
             k = k - 1;
+            for (let xz = 1; xz < 9; xz++) {
+              for (let xy = 1; xy < 9; xy++) {
+                xx = xy + "" + xz;
+                if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
           }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackknight_s8tzkr.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of white) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its Blacks Turn";
           turn = turn + 1;
           piece = "bkn";
@@ -883,6 +992,8 @@
             document.querySelector(
               "#" + "i" + step1 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step1 + "b");
+            arr1.push(pop);
           }
           e = e - 2;
           f = f - 1;
@@ -892,6 +1003,8 @@
             document.querySelector(
               "#" + "i" + step2 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step2 + "b");
+            arr1.push(pop);
           }
           g = g - 2;
           h = h + 1;
@@ -901,6 +1014,8 @@
             document.querySelector(
               "#" + "i" + step3 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step3 + "b");
+            arr1.push(pop);
           }
           k = k - 1;
           l = l + 2;
@@ -910,6 +1025,8 @@
             document.querySelector(
               "#" + "i" + step4 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step4 + "b");
+            arr1.push(pop);
           }
           m = m + 1;
           n = n + 2;
@@ -919,6 +1036,8 @@
             document.querySelector(
               "#" + "i" + step5 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step5 + "b");
+            arr1.push(pop);
           }
           p = p + 1;
           o = o + 2;
@@ -928,6 +1047,8 @@
             document.querySelector(
               "#" + "i" + step6 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step6 + "b");
+            arr1.push(pop);
           }
           q = q + 2;
           r = r - 1;
@@ -937,6 +1058,8 @@
             document.querySelector(
               "#" + "i" + step7 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step7 + "b");
+            arr1.push(pop);
           }
           s = s + 1;
           t = t - 2;
@@ -946,276 +1069,414 @@
             document.querySelector(
               "#" + "i" + step8 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step8 + "b");
+            arr1.push(pop);
+          }
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (
+                xx != step8 &&
+                xx != step1 &&
+                xx != step2 &&
+                xx != step3 &&
+                xx != step4 &&
+                xx != step5 &&
+                xx != step6 &&
+                xx != step7
+              ) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
           }
         }
-        if (
-          src ==
-          "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackbishop_jtq3ub.png"
-        ) {
-          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
-          turn = turn + 1;
-          piece = "bb";
-          b = b + 1;
-          a = a + 1;
-          var c = b;
-          var d = a;
-          var e = b;
-          var f = a;
-          var g = b;
-          var h = a;
-          var k = b;
-          var l = a;
-
-          for (let i = 1; i < 16; i++) {
-            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
-              var step = c + "" + d;
-
-              document.querySelector(
-                "#" + "i" + step + "b"
-              ).style.backgroundColor = "red";
+      }
+      if (
+        src ==
+        "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackbishop_jtq3ub.png"
+      ) {
+        for (let xz = 1; xz < 9; xz++) {
+          for (let xy = 1; xy < 9; xy++) {
+            xx = xy + "" + xz;
+            for (let i of white) {
+              if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
             }
-            c = c - 1;
-            d = d - 1;
-            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
-              var step1 = e + "" + f;
-
-              document.querySelector(
-                "#" + "i" + step1 + "b"
-              ).style.backgroundColor = "red";
-            }
-            e = e + 1;
-            f = f + 1;
-            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
-              var step2 = g + "" + h;
-
-              document.querySelector(
-                "#" + "i" + step2 + "b"
-              ).style.backgroundColor = "red";
-            }
-            g = g + 1;
-            h = h - 1;
-            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
-              var step3 = k + "" + l;
-
-              document.querySelector(
-                "#" + "i" + step3 + "b"
-              ).style.backgroundColor = "red";
-            }
-            k = k - 1;
-            l = l + 1;
           }
         }
-        if (
-          src ==
-          "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackqueen_dnlfsr.png"
-        ) {
-          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
-          turn = turn + 1;
-          piece = "bq";
 
-          b = b + 1;
-          a = a + 1;
+        document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+        turn = turn + 1;
+        piece = "bb";
+        b = b + 1;
+        a = a + 1;
+        var c = b;
+        var d = a;
+        var e = b;
+        var f = a;
+        var g = b;
+        var h = a;
+        var k = b;
+        var l = a;
 
-          var y = b;
-          var z = a;
-
-          var c = b;
-          var d = a;
-          var e = b;
-          var f = a;
-          var g = b;
-          var h = a;
-          var k = b;
-          var l = a;
-
-          for (let i = 1; i < 16; i++) {
-            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
-              var step = c + "" + d;
-
-              document.querySelector(
-                "#" + "i" + step + "b"
-              ).style.backgroundColor = "red";
-            }
-            d = d - 1;
-            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
-              var step1 = e + "" + f;
-
-              document.querySelector(
-                "#" + "i" + step1 + "b"
-              ).style.backgroundColor = "red";
-            }
-            f = f + 1;
-            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
-              var step2 = g + "" + h;
-
-              document.querySelector(
-                "#" + "i" + step2 + "b"
-              ).style.backgroundColor = "red";
-            }
-            g = g + 1;
-            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
-              var step3 = k + "" + l;
-
-              document.querySelector(
-                "#" + "i" + step3 + "b"
-              ).style.backgroundColor = "red";
-            }
-            k = k - 1;
-          }
-
-          c = y;
-          d = z;
-          e = y;
-          f = z;
-          g = y;
-          h = z;
-          k = y;
-          l = z;
-
-          for (let i = 1; i < 16; i++) {
-            if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
-              var step = c + "" + d;
-
-              document.querySelector(
-                "#" + "i" + step + "b"
-              ).style.backgroundColor = "red";
-            }
-            c = c - 1;
-            d = d - 1;
-            if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
-              var step1 = e + "" + f;
-
-              document.querySelector(
-                "#" + "i" + step1 + "b"
-              ).style.backgroundColor = "red";
-            }
-            e = e + 1;
-            f = f + 1;
-            if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
-              var step2 = g + "" + h;
-
-              document.querySelector(
-                "#" + "i" + step2 + "b"
-              ).style.backgroundColor = "red";
-            }
-            g = g + 1;
-            h = h - 1;
-            if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
-              var step3 = k + "" + l;
-
-              document.querySelector(
-                "#" + "i" + step3 + "b"
-              ).style.backgroundColor = "red";
-            }
-            k = k - 1;
-            l = l + 1;
-          }
-        }
-        if (
-          src ==
-          "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackking_i5pyup.png"
-        ) {
-          document.querySelector("#h1").innerHTML = "Its Blacks Turn";
-          turn = turn + 1;
-          piece = "bk";
-          b = b + 1;
-          a = a + 1;
-          var c = b;
-          var d = a;
-          var e = b;
-          var f = a;
-          var g = b;
-          var h = a;
-          var k = b;
-          var l = a;
-          var m = b;
-          var n = a;
-          var o = b;
-          var p = a;
-          var q = b;
-          var r = a;
-          var s = b;
-          var t = a;
-          var u = b;
-          var v = a;
-
-          var step1;
-          var step2;
-          var step3;
-          var step4;
-          var step5;
-          var step6;
-          var step7;
-          var step8;
-
-          c = c + 1;
-          d = d - 1;
+        for (let i = 1; i < 16; i++) {
           if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
-            step1 = c + "" + d;
+            var step = c + "" + d;
+
+            document.querySelector(
+              "#" + "i" + step + "b"
+            ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step + "b");
+            arr1.push(pop);
+          }
+          c = c - 1;
+          d = d - 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            var step1 = e + "" + f;
 
             document.querySelector(
               "#" + "i" + step1 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step1 + "b");
+            arr1.push(pop);
           }
-
           e = e + 1;
-          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
-            step2 = e + "" + f;
+          f = f + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            var step2 = g + "" + h;
 
             document.querySelector(
               "#" + "i" + step2 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step2 + "b");
+            arr1.push(pop);
           }
           g = g + 1;
-          h = h + 1;
-          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
-            step3 = g + "" + h;
+          h = h - 1;
+          if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+            var step3 = k + "" + l;
 
             document.querySelector(
               "#" + "i" + step3 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step3 + "b");
+            arr1.push(pop);
           }
-          n = n - 1;
-          if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
-            step4 = m + "" + n;
+          k = k - 1;
+          l = l + 1;
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
+        }
+      }
+      if (
+        src ==
+        "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackqueen_dnlfsr.png"
+      ) {
+        for (let xz = 1; xz < 9; xz++) {
+          for (let xy = 1; xy < 9; xy++) {
+            xx = xy + "" + xz;
+            for (let i of white) {
+              if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
+        }
+
+        document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+        turn = turn + 1;
+        piece = "bq";
+
+        b = b + 1;
+        a = a + 1;
+
+        var y = b;
+        var z = a;
+
+        var c = b;
+        var d = a;
+        var e = b;
+        var f = a;
+        var g = b;
+        var h = a;
+        var k = b;
+        var l = a;
+
+        for (let i = 1; i < 16; i++) {
+          if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+            var step = c + "" + d;
 
             document.querySelector(
-              "#" + "i" + step4 + "b"
+              "#" + "i" + step + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step + "b");
+            arr1.push(pop);
           }
-          p = p + 1;
-          if (o >= 1 && o <= 8 && p >= 1 && p <= 8) {
-            step5 = o + "" + p;
+          d = d - 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            var step1 = e + "" + f;
 
             document.querySelector(
-              "#" + "i" + step5 + "b"
+              "#" + "i" + step1 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step1 + "b");
+            arr1.push(pop);
           }
-          q = q - 1;
-          r = r - 1;
-          if (q >= 1 && q <= 8 && r >= 1 && r <= 8) {
-            step6 = q + "" + r;
+          f = f + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            var step2 = g + "" + h;
 
             document.querySelector(
-              "#" + "i" + step6 + "b"
+              "#" + "i" + step2 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step2 + "b");
+            arr1.push(pop);
           }
-          s = s - 1;
-          if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
-            step7 = s + "" + t;
+          g = g + 1;
+          if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+            var step3 = k + "" + l;
 
             document.querySelector(
-              "#" + "i" + step7 + "b"
+              "#" + "i" + step3 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step3 + "b");
+            arr1.push(pop);
           }
-          u = u - 1;
-          v = v + 1;
-          if (u >= 1 && u <= 8 && v >= 1 && v <= 8) {
-            step8 = u + "" + v;
+          k = k - 1;
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
+        }
+
+        c = y;
+        d = z;
+        e = y;
+        f = z;
+        g = y;
+        h = z;
+        k = y;
+        l = z;
+
+        for (let i = 1; i < 16; i++) {
+          if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+            var step = c + "" + d;
 
             document.querySelector(
-              "#" + "i" + step8 + "b"
+              "#" + "i" + step + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step + "b");
+            arr1.push(pop);
+          }
+          c = c - 1;
+          d = d - 1;
+          if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+            var step1 = e + "" + f;
+
+            document.querySelector(
+              "#" + "i" + step1 + "b"
+            ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step1 + "b");
+            arr1.push(pop);
+          }
+          e = e + 1;
+          f = f + 1;
+          if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+            var step2 = g + "" + h;
+
+            document.querySelector(
+              "#" + "i" + step2 + "b"
+            ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step2 + "b");
+            arr1.push(pop);
+          }
+          g = g + 1;
+          h = h - 1;
+          if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
+            var step3 = k + "" + l;
+
+            document.querySelector(
+              "#" + "i" + step3 + "b"
+            ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step3 + "b");
+            arr1.push(pop);
+          }
+          k = k - 1;
+          l = l + 1;
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
+        }
+      }
+      if (
+        src ==
+        "https://res.cloudinary.com/djognfxr9/image/upload/v1680634269/blackking_i5pyup.png"
+      ) {
+        for (let xz = 1; xz < 9; xz++) {
+          for (let xy = 1; xy < 9; xy++) {
+            xx = xy + "" + xz;
+            for (let i of white) {
+              if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
+        }
+
+        document.querySelector("#h1").innerHTML = "Its Blacks Turn";
+        turn = turn + 1;
+        piece = "bk";
+        b = b + 1;
+        a = a + 1;
+        var c = b;
+        var d = a;
+        var e = b;
+        var f = a;
+        var g = b;
+        var h = a;
+        var k = b;
+        var l = a;
+        var m = b;
+        var n = a;
+        var o = b;
+        var p = a;
+        var q = b;
+        var r = a;
+        var s = b;
+        var t = a;
+        var u = b;
+        var v = a;
+
+        var step1;
+        var step2;
+        var step3;
+        var step4;
+        var step5;
+        var step6;
+        var step7;
+        var step8;
+
+        c = c + 1;
+        d = d - 1;
+        if (c >= 1 && c <= 8 && d >= 1 && d <= 8) {
+          step1 = c + "" + d;
+
+          document.querySelector(
+            "#" + "i" + step1 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step1 + "b");
+          arr1.push(pop);
+        }
+
+        e = e + 1;
+        if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
+          step2 = e + "" + f;
+
+          document.querySelector(
+            "#" + "i" + step2 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step2 + "b");
+          arr1.push(pop);
+        }
+        g = g + 1;
+        h = h + 1;
+        if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
+          step3 = g + "" + h;
+
+          document.querySelector(
+            "#" + "i" + step3 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step3 + "b");
+          arr1.push(pop);
+        }
+        n = n - 1;
+        if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
+          step4 = m + "" + n;
+
+          document.querySelector(
+            "#" + "i" + step4 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step4 + "b");
+          arr1.push(pop);
+        }
+        p = p + 1;
+        if (o >= 1 && o <= 8 && p >= 1 && p <= 8) {
+          step5 = o + "" + p;
+
+          document.querySelector(
+            "#" + "i" + step5 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step5 + "b");
+          arr1.push(pop);
+        }
+        q = q - 1;
+        r = r - 1;
+        if (q >= 1 && q <= 8 && r >= 1 && r <= 8) {
+          step6 = q + "" + r;
+
+          document.querySelector(
+            "#" + "i" + step6 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step6 + "b");
+          arr1.push(pop);
+        }
+        s = s - 1;
+        if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
+          step7 = s + "" + t;
+
+          document.querySelector(
+            "#" + "i" + step7 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step7 + "b");
+          arr1.push(pop);
+        }
+        u = u - 1;
+        v = v + 1;
+        if (u >= 1 && u <= 8 && v >= 1 && v <= 8) {
+          step8 = u + "" + v;
+
+          document.querySelector(
+            "#" + "i" + step8 + "b"
+          ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step8 + "b");
+          arr1.push(pop);
+        }
+
+        for (let xz = 1; xz < 9; xz++) {
+          for (let xy = 1; xy < 9; xy++) {
+            xx = xy + "" + xz;
+            if (
+              xx != step1 &&
+              xx != step2 &&
+              xx != step3 &&
+              xx != step4 &&
+              xx != step5 &&
+              xx != step6 &&
+              xx != step7 &&
+              xx != step8
+            ) {
+              document.querySelector("#" + "i" + xx + "b").disabled = "true";
+            }
           }
         }
       } else if (turn % 2 == 0) {
@@ -1223,6 +1484,17 @@
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitepawn_w0tjjs.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of black) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
           document.querySelector("#h1").innerHTML = "Its White's Turn";
           turn = turn + 1;
           piece = "wp";
@@ -1234,14 +1506,39 @@
           document.querySelector(
             "#" + "i" + step1 + "b"
           ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step1 + "b");
+          arr1.push(pop);
           document.querySelector(
             "#" + "i" + step2 + "b"
           ).style.backgroundColor = "red";
+          var pop = document.querySelector("#" + "i" + step2 + "b");
+          arr1.push(pop);
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (xx != step1 && xx != step2) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
+          }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634271/whiterook_hy8d3v.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of black) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its White's Turn";
           turn = turn + 1;
           piece = "wr";
@@ -1263,6 +1560,8 @@
               document.querySelector(
                 "#" + "i" + step + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step + "b");
+              arr1.push(pop);
             }
             d = d - 1;
             if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
@@ -1271,6 +1570,8 @@
               document.querySelector(
                 "#" + "i" + step1 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step1 + "b");
+              arr1.push(pop);
             }
             f = f + 1;
             if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
@@ -1279,6 +1580,8 @@
               document.querySelector(
                 "#" + "i" + step2 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step2 + "b");
+              arr1.push(pop);
             }
             g = g + 1;
             if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
@@ -1287,14 +1590,38 @@
               document.querySelector(
                 "#" + "i" + step3 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step3 + "b");
+              arr1.push(pop);
             }
             k = k - 1;
+
+            for (let xz = 1; xz < 9; xz++) {
+              for (let xy = 1; xy < 9; xy++) {
+                xx = xy + "" + xz;
+                if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
           }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whiteknight_arpbye.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of black) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its White's Turn";
           turn = turn + 1;
           piece = "wkn";
@@ -1324,6 +1651,8 @@
             document.querySelector(
               "#" + "i" + step1 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step1 + "b");
+            arr1.push(pop);
           }
           e = e - 2;
           f = f - 1;
@@ -1333,6 +1662,8 @@
             document.querySelector(
               "#" + "i" + step2 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step2 + "b");
+            arr1.push(pop);
           }
           g = g - 2;
           h = h + 1;
@@ -1342,6 +1673,8 @@
             document.querySelector(
               "#" + "i" + step3 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step3 + "b");
+            arr1.push(pop);
           }
           k = k - 1;
           l = l + 2;
@@ -1351,6 +1684,8 @@
             document.querySelector(
               "#" + "i" + step4 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step4 + "b");
+            arr1.push(pop);
           }
           m = m + 1;
           n = n + 2;
@@ -1360,6 +1695,8 @@
             document.querySelector(
               "#" + "i" + step5 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step5 + "b");
+            arr1.push(pop);
           }
           p = p + 1;
           o = o + 2;
@@ -1369,6 +1706,8 @@
             document.querySelector(
               "#" + "i" + step6 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step6 + "b");
+            arr1.push(pop);
           }
           q = q + 2;
           r = r - 1;
@@ -1378,6 +1717,8 @@
             document.querySelector(
               "#" + "i" + step7 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step7 + "b");
+            arr1.push(pop);
           }
           s = s + 1;
           t = t - 2;
@@ -1387,12 +1728,44 @@
             document.querySelector(
               "#" + "i" + step8 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step8 + "b");
+            arr1.push(pop);
+          }
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (
+                xx != step1 &&
+                xx != step2 &&
+                xx != step3 &&
+                xx != step4 &&
+                xx != step5 &&
+                xx != step6 &&
+                xx != step7 &&
+                xx != step8
+              ) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
           }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitebishop_vtx0z5.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of black) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its White's Turn";
           turn = turn + 1;
           piece = "wb";
@@ -1414,6 +1787,8 @@
               document.querySelector(
                 "#" + "i" + step + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step + "b");
+              arr1.push(pop);
             }
             c = c - 1;
             d = d - 1;
@@ -1423,6 +1798,8 @@
               document.querySelector(
                 "#" + "i" + step1 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step1 + "b");
+              arr1.push(pop);
             }
             e = e + 1;
             f = f + 1;
@@ -1432,6 +1809,8 @@
               document.querySelector(
                 "#" + "i" + step2 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step2 + "b");
+              arr1.push(pop);
             }
             g = g + 1;
             h = h - 1;
@@ -1441,15 +1820,39 @@
               document.querySelector(
                 "#" + "i" + step3 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step3 + "b");
+              arr1.push(pop);
             }
             k = k - 1;
             l = l + 1;
+
+            for (let xz = 1; xz < 9; xz++) {
+              for (let xy = 1; xy < 9; xy++) {
+                xx = xy + "" + xz;
+                if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
           }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whitequeen_zfetld.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of black) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its White's Turn";
           turn = turn + 1;
           piece = "wq";
@@ -1476,6 +1879,8 @@
               document.querySelector(
                 "#" + "i" + step + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step + "b");
+              arr1.push(pop);
             }
             d = d - 1;
             if (e >= 1 && e <= 8 && f >= 1 && f <= 8) {
@@ -1484,6 +1889,8 @@
               document.querySelector(
                 "#" + "i" + step1 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step1 + "b");
+              arr1.push(pop);
             }
             f = f + 1;
             if (g >= 1 && g <= 8 && h >= 1 && h <= 8) {
@@ -1492,6 +1899,8 @@
               document.querySelector(
                 "#" + "i" + step2 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step2 + "b");
+              arr1.push(pop);
             }
             g = g + 1;
             if (k >= 1 && k <= 8 && l >= 1 && l <= 8) {
@@ -1500,8 +1909,20 @@
               document.querySelector(
                 "#" + "i" + step3 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step3 + "b");
+              arr1.push(pop);
             }
             k = k - 1;
+
+            for (let xz = 1; xz < 9; xz++) {
+              for (let xy = 1; xy < 9; xy++) {
+                xx = xy + "" + xz;
+                if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
           }
 
           c = y;
@@ -1520,6 +1941,8 @@
               document.querySelector(
                 "#" + "i" + step + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step + "b");
+              arr1.push(pop);
             }
             c = c - 1;
             d = d - 1;
@@ -1529,6 +1952,8 @@
               document.querySelector(
                 "#" + "i" + step1 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step1 + "b");
+              arr1.push(pop);
             }
             e = e + 1;
             f = f + 1;
@@ -1538,6 +1963,8 @@
               document.querySelector(
                 "#" + "i" + step2 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step2 + "b");
+              arr1.push(pop);
             }
             g = g + 1;
             h = h - 1;
@@ -1547,15 +1974,39 @@
               document.querySelector(
                 "#" + "i" + step3 + "b"
               ).style.backgroundColor = "red";
+              var pop = document.querySelector("#" + "i" + step3 + "b");
+              arr1.push(pop);
             }
             k = k - 1;
             l = l + 1;
+
+            for (let xz = 1; xz < 9; xz++) {
+              for (let xy = 1; xy < 9; xy++) {
+                xx = xy + "" + xz;
+                if (xx != step && xx != step1 && xx != step2 && xx != step3) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
           }
         }
         if (
           src ==
           "https://res.cloudinary.com/djognfxr9/image/upload/v1680634270/whiteking_ianh5t.png"
         ) {
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              for (let i of black) {
+                if (document.querySelector("#" + "i" + xx + "b").src == i.src) {
+                  document.querySelector("#" + "i" + xx + "b").disabled =
+                    "true";
+                }
+              }
+            }
+          }
+
           document.querySelector("#h1").innerHTML = "Its White's Turn";
           turn = turn + 1;
           piece = "wk";
@@ -1598,6 +2049,8 @@
             document.querySelector(
               "#" + "i" + step1 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step1 + "b");
+            arr1.push(pop);
           }
 
           e = e + 1;
@@ -1607,6 +2060,8 @@
             document.querySelector(
               "#" + "i" + step2 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step2 + "b");
+            arr1.push(pop);
           }
           g = g + 1;
           h = h + 1;
@@ -1616,6 +2071,8 @@
             document.querySelector(
               "#" + "i" + step3 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step3 + "b");
+            arr1.push(pop);
           }
           n = n - 1;
           if (m >= 1 && m <= 8 && n >= 1 && n <= 8) {
@@ -1624,6 +2081,8 @@
             document.querySelector(
               "#" + "i" + step4 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step4 + "b");
+            arr1.push(pop);
           }
           p = p + 1;
           if (o >= 1 && o <= 8 && p >= 1 && p <= 8) {
@@ -1632,6 +2091,8 @@
             document.querySelector(
               "#" + "i" + step5 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step5 + "b");
+            arr1.push(pop);
           }
           q = q - 1;
           r = r - 1;
@@ -1641,6 +2102,8 @@
             document.querySelector(
               "#" + "i" + step6 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step6 + "b");
+            arr1.push(pop);
           }
           s = s - 1;
           if (s >= 1 && s <= 8 && t >= 1 && t <= 8) {
@@ -1649,6 +2112,8 @@
             document.querySelector(
               "#" + "i" + step7 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step7 + "b");
+            arr1.push(pop);
           }
           u = u - 1;
           v = v + 1;
@@ -1658,6 +2123,26 @@
             document.querySelector(
               "#" + "i" + step8 + "b"
             ).style.backgroundColor = "red";
+            var pop = document.querySelector("#" + "i" + step8 + "b");
+            arr1.push(pop);
+          }
+
+          for (let xz = 1; xz < 9; xz++) {
+            for (let xy = 1; xy < 9; xy++) {
+              xx = xy + "" + xz;
+              if (
+                xx != step1 &&
+                xx != step2 &&
+                xx != step3 &&
+                xx != step4 &&
+                xx != step5 &&
+                xx != step6 &&
+                xx != step7 &&
+                xx != step8
+              ) {
+                document.querySelector("#" + "i" + xx + "b").disabled = "true";
+              }
+            }
           }
         }
       }
